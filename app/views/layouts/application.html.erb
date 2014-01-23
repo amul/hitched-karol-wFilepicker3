@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hitched</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= filepicker_js_include_tag %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "http://feather.aviary.com/js/feather.js" %>
+  <%= javascript_include_tag %>
+  <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<%= render 'layouts/header' %>
+	<div class="container">
+		
+		<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class:"alert alert-info") %>
+		<% end %>
+		
+		<%= yield %>
+	</div>
+</body>
+</html>

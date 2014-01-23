@@ -1,0 +1,26 @@
+<div class="jumbotron center">
+     <% if user_signed_in? %>
+     	<div ng-app="notes" ng-controller="NotesCtrl">
+          <ul>
+            <li ng-repeat="note in notes">
+              <amul-contenteditable model="note.title" on-blur="updateNote(note)"></amul-contenteditable>
+              <amul-contenteditable model="note.body" on-blur="updateNote(note)"></amul-contenteditable>
+              <button ng-click="deleteNote(note)">[x]</button>
+            </li>
+          </ul>
+
+          <form action="/api/notes" method="post">
+            <input type="text" name="title" ng-model="title" />
+            <input type="text" name="body" ng-model="body" />
+          </form>
+          <button ng-click="addNote()">Add</button>
+        </div>
+     <% else %>
+	     <p>
+	       <%= link_to "Log in", new_user_session_path, 
+	       class: "btn btn-default btn-lg" %>
+	       <%= link_to "Sign up", new_user_registration_path,
+	        class: "btn btn-primary btn-lg" %>
+	     </p>
+	  <% end %>    
+</div>

@@ -1,0 +1,9 @@
+#!/usr/bin/python
+#
+# Serve current directory via HTTP on port 8080.
+#
+
+import BaseHTTPServer, SimpleHTTPServer
+
+httpd = BaseHTTPServer.HTTPServer(('',8080), SimpleHTTPServer.SimpleHTTPRequestHandler)
+httpd.serve_forever()
